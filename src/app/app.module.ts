@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreateMadLibComponent } from './create-mad-lib/create-mad-lib.component';
+import { ViewMadLibsComponent } from './view-mad-libs/view-mad-libs.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateMadLibComponent,
+    ViewMadLibsComponent
   ],
   imports: [
     BrowserModule,
