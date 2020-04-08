@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, element, by } from 'protractor';
 
 describe('Mad Libs', () => {
   let page: AppPage;
@@ -8,9 +8,19 @@ describe('Mad Libs', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Hello');
+  describe('Creating Mad Libs', () => {
+    it('provides a form to fill out a mad lib and the ability to save it and view it', () => {
+      page.navigateTo();
+      page.clickLinkByText('Create Mad Lib');
+
+      page.fillInMadLibText('___________ is authorized to be at ___________ instead of ___________ class.')
+
+      page.saveMadLib();
+
+      page.clickLinkByText('View Mad Libs');
+
+      expect(element.all(by.css('li')).count()).toBe(1);
+    });
   });
 
   afterEach(async () => {
