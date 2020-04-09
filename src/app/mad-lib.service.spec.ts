@@ -2,6 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { MadLibService } from './mad-lib.service';
+import { MadLib } from './mad-lib';
 
 describe('MadLibService', () => {
   let service: MadLibService;
@@ -23,12 +24,12 @@ describe('MadLibService', () => {
   });
 
   it('should POST the MadLib to /madlib', () => {
-    const madLib = { sentence: "An awesome mad lib." };
+    const madLib = "An awesome mad lib.";
     service.saveMadLib(madLib).subscribe(() => { });
 
     const request = httpMock.expectOne('/madlib');
     expect(request.request.method).toBe('POST');
-    expect(request.request.body).toEqual(madLib)
+    expect(request.request.body).toEqual(<MadLib>{ sentence: madLib });
 
     request.flush({});
   });

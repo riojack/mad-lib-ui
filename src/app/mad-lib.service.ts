@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class MadLibService {
   constructor(private http: HttpClient) { }
 
-  saveMadLib(madLib: MadLib): Observable<MadLib> {
-    return this.http.post<MadLib>('/madlib', madLib);
+  saveMadLib(madLib: string): Observable<MadLib> {
+    return this.http.post<MadLib>('/madlib', <MadLib>{sentence: madLib});
   }
 }
