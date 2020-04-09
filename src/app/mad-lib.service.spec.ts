@@ -23,10 +23,13 @@ describe('MadLibService', () => {
   });
 
   it('should POST the MadLib to /madlib', () => {
-    service.saveMadLib({ sentence: "" }).subscribe(() => {});
+    const madLib = { sentence: "An awesome mad lib." };
+    service.saveMadLib(madLib).subscribe(() => { });
 
     const request = httpMock.expectOne('/madlib');
     expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual(madLib)
+
     request.flush({});
   });
 });
