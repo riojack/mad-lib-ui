@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateMadLibComponent } from './create-mad-lib/create-mad-lib.component';
 import { ViewMadLibsComponent } from './view-mad-libs/view-mad-libs.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ViewMadLibsComponent } from './view-mad-libs/view-mad-libs.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

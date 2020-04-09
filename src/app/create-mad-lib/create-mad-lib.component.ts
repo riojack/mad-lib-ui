@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MadLibService } from '../mad-lib.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-mad-lib',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateMadLibComponent implements OnInit {
 
-  constructor() { }
+  madLibFormControl: FormControl;
+
+  constructor(private madLibService: MadLibService) { }
 
   ngOnInit(): void {
+    this.madLibFormControl = new FormControl('');
+  }
+
+  onSave(): void {
+    this.madLibService.saveMadLib(this.madLibFormControl.value);
   }
 
 }
